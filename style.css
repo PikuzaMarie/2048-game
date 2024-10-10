@@ -48,7 +48,7 @@ h2 {
 hr {
     border: 1px solid #776e65;
 }
-.board {
+#board {
     display: flex;
     flex-wrap: wrap;
     width: 400px;
