@@ -3,8 +3,6 @@ let score = 0;
 let rows = 4;
 let columns = 4;
 
-let tilesBoard = document.getElementById('board');
-
 window.onload = function() {
     setGame();
 }
@@ -23,10 +21,23 @@ function setGame() {
             tile.id = r.toString() + ':' + c.toString();
             let num = initBoard[r][c];
             updateTile(tile, num);
-            tilesBoard.append(tile);
+            document.getElementById('board').append(tile);
         }
     }
     //set numbers in two tiles
     // setTwo();
     // setTwo();
+}
+
+function updateTile(tile, num) {
+    tile.innerText = '';
+    tile.classList.value = '';
+    tile.classList.add('tile');
+
+    if (num > 0) {
+        tile.innerText = num.toString();
+        if (num <= 8192) {
+            tile.classList.add('x' + num.toString());
+        }
+    }
 }
