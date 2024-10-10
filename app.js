@@ -14,7 +14,6 @@ function setGame() {
         [8, 8, 2, 2],
         [8, 8, 2, 2]
     ]
-
     for (let r = 0; r < rows; r += 1) {
         for (let c = 0; c < columns; c += 1) {
             let tile = document.createElement('div');
@@ -49,6 +48,10 @@ document.addEventListener('keyup', (e) => {
     }
     else if (e.code === 'ArrowRight') {
         slideRight();
+        //setTwo();
+    }
+    else if (e.code === 'ArrowUp') {
+        slideUp();
         //setTwo();
     }
 });
@@ -99,6 +102,20 @@ function slideRight() {
         board[r] = row.reverse(); // [0, 0, 2, 4]
 
         for (let c = 0; c < columns; c += 1) {
+            let tile = document.getElementById(r.toString() + '-' + c.toString());
+            let num = board[r][c];
+            updateTile(tile, num);
+        }
+    }
+}
+//Move tiles and change numbers after click on up arrow
+function slideUp() {
+    for (let c = 0; c < columns; c += 1) {
+        let column = [board[0][c], board[1][c], board[2][c], board[3][c]];
+        column = slide(column);
+
+        for (let r = 0; r < rows; r += 1) {
+            board[r][c] = column[r];
             let tile = document.getElementById(r.toString() + '-' + c.toString());
             let num = board[r][c];
             updateTile(tile, num);
