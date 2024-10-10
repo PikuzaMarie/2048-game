@@ -9,10 +9,10 @@ window.onload = function() {
 // Init the board and fill the game board with tiles
 function setGame() {
     board = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 4, 0, 0]
+        [4, 4, 2, 2],
+        [4, 4, 2, 2],
+        [8, 8, 2, 2],
+        [8, 8, 2, 2]
     ]
 
     for (let r = 0; r < rows; r += 1) {
@@ -47,6 +47,10 @@ document.addEventListener('keyup', (e) => {
         slideLeft();
         // setTwo();
     }
+    else if (e.code === 'ArrowRight') {
+        slideRight();
+        //setTwo();
+    }
 });
 
 function filterZeros(row) {
@@ -78,6 +82,21 @@ function slideLeft() {
         let row = board[r];
         row = slide(row);
         board[r] = row;
+
+        for (let c = 0; c < columns; c += 1) {
+            let tile = document.getElementById(r.toString() + '-' + c.toString());
+            let num = board[r][c];
+            updateTile(tile, num);
+        }
+    }
+}
+//Move tiles and change numbers after click on right arrow
+function slideRight() {
+    for (let r = 0; r < rows; r += 1) {
+        let row = board[r]; //[2, 0, 2, 2]
+        row.reverse(); //[2, 2, 0, 2]
+        row = slide(row); // [4, 2, 0, 0]
+        board[r] = row.reverse(); // [0, 0, 2, 4]
 
         for (let c = 0; c < columns; c += 1) {
             let tile = document.getElementById(r.toString() + '-' + c.toString());
