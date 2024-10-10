@@ -9,10 +9,10 @@ window.onload = function() {
 // Init the board and fill the game board with tiles
 function setGame() {
     board = [
-        [4, 4, 2, 2],
-        [4, 4, 2, 2],
-        [8, 8, 2, 2],
-        [8, 8, 2, 2]
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
     ]
     for (let r = 0; r < rows; r += 1) {
         for (let c = 0; c < columns; c += 1) {
@@ -24,8 +24,8 @@ function setGame() {
         }
     }
     //set numbers in two tiles
-    // setTwo();
-    // setTwo();
+    setTwo();
+    setTwo();
 }
 
 function updateTile(tile, num) {
@@ -44,19 +44,19 @@ function updateTile(tile, num) {
 document.addEventListener('keyup', (e) => {
     if (e.code === 'ArrowLeft') {
         slideLeft();
-        // setTwo();
+        setTwo();
     }
     else if (e.code === 'ArrowRight') {
         slideRight();
-        //setTwo();
+        setTwo();
     }
     else if (e.code === 'ArrowUp') {
         slideUp();
-        //setTwo();
+        setTwo();
     }
     else if (e.code === 'ArrowDown') {
         slideDown();
-        //setTwo();
+        setTwo();
     }
 });
 
@@ -141,4 +141,38 @@ function slideDown() {
             updateTile(tile, num);
         }
     }
+}
+//Set a value of 2 to an empty tile
+function setTwo() {
+    if (!hasEmptyTile()) {
+        return;
+    }
+
+    let found = false;
+
+    while(!found) {
+        let r = Math.floor(Math.random() * rows);
+        let c = Math.floor(Math.random() * columns);
+
+        if(board[r][c] === 0) {
+            board[r][c] = 2;
+            let tile = document.getElementById(r.toString() + '-' + c.toString());
+            tile.innerText = '2';
+            tile.classList.add('x2');
+            found = true;
+        }
+    }
+}
+//Search for an epmty tile
+function hasEmptyTile() {
+    
+    for (let r = 0; r < rows; r += 1) {
+        for (let c = 0; c < columns; c += 1) {
+            if (board[r][c] === 0) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
