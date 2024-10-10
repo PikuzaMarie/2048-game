@@ -54,6 +54,10 @@ document.addEventListener('keyup', (e) => {
         slideUp();
         //setTwo();
     }
+    else if (e.code === 'ArrowDown') {
+        slideDown();
+        //setTwo();
+    }
 });
 
 function filterZeros(row) {
@@ -113,6 +117,22 @@ function slideUp() {
     for (let c = 0; c < columns; c += 1) {
         let column = [board[0][c], board[1][c], board[2][c], board[3][c]];
         column = slide(column);
+
+        for (let r = 0; r < rows; r += 1) {
+            board[r][c] = column[r];
+            let tile = document.getElementById(r.toString() + '-' + c.toString());
+            let num = board[r][c];
+            updateTile(tile, num);
+        }
+    }
+}
+//Move tiles and change numbers after click on down arrow
+function slideDown() {
+    for (let c = 0; c < columns; c += 1) {
+        let column = [board[0][c], board[1][c], board[2][c], board[3][c]];
+        column.reverse();
+        column = slide(column);
+        column.reverse();
 
         for (let r = 0; r < rows; r += 1) {
             board[r][c] = column[r];
