@@ -67,7 +67,7 @@ function filterZeros(row) {
 function slide(row) {
     row = filterZeros(row);
 
-    for (let i = 0; i < rows; i += 1) {
+    for (let i = 0; i < row.length - 1; i += 1) {
         if (row[i] === row[i + 1]) {
             row[i] *= 2;
             row[i + 1] = 0;
