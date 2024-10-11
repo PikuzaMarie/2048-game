@@ -14,6 +14,7 @@ function setGame() {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
+    document.getElementById('board').innerHTML = '';
     for (let r = 0; r < rows; r += 1) {
         for (let c = 0; c < columns; c += 1) {
             let tile = document.createElement('div');
@@ -26,8 +27,8 @@ function setGame() {
     //set numbers in two tiles
     setTwo();
     setTwo();
+    document.addEventListener('keyup', control);
 }
-
 function updateTile(tile, num) {
     tile.innerText = '';
     tile.classList.value = '';
@@ -40,8 +41,9 @@ function updateTile(tile, num) {
         }
     }
 }
+//Implement event corresponding to clicked arrow
+function control(e) {
 
-document.addEventListener('keyup', (e) => {
     if (e.code === 'ArrowLeft') {
         slideLeft();
         setTwo();
@@ -59,7 +61,10 @@ document.addEventListener('keyup', (e) => {
         setTwo();
     }
     document.getElementById('score').innerText = score;
-});
+    checkForWin();
+}
+//Add event listener
+document.addEventListener('keyup', control);
 
 function filterZeros(row) {
     return row.filter(num => num !== 0);
@@ -175,5 +180,40 @@ function hasEmptyTile() {
         }
     }
 
+    return false;
+}
+// Check for game state
+function checkGameState() {
+    //Check for win
+    for (let r = 0; r < rows; r += 1) {
+        for (let c = 0; c < columns; c +=1) {
+            if (board[r][c] === 2048) {
+                alert('You WON! Great job!');
+                return 'win';
+            }
+        }
+    }
+    //Check for lose
+    if (!hasEmptyTile() && !canMove()) {
+        alert('You failed this time. Try once again');
+        return 'lose';
+    }
+    //If it is neither win nor lose, continue
+    return 'continue';
+}
+//Check if it is possible to move objects
+function canMove() {
+    for (let r = 0; r < rows; r += 1) {
+        for (let c = 0; c < columns; c +=1) {
+            //Check for possibility of merging values horizontally
+            if (r < rows - 1 && board[r][c] === board[r + 1][c]) {
+                return true;
+            }
+            //Check for possibility of merging values vertically
+            if (c < columns - 1 && board[r][c] === board[r][c + 1]) {
+                return true;
+            }
+        }
+    }
     return false;
 }
