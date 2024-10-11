@@ -2,6 +2,7 @@ let board = [];
 let score = 0;
 let rows = 4;
 let columns = 4;
+let count = 0;
 
 window.onload = function() {
     setGame();
@@ -194,6 +195,7 @@ function checkGameState() {
         for (let c = 0; c < columns; c +=1) {
             if (board[r][c] === 2048) {
                 alert('You WON! Great job!');
+                storeResult();
                 return 'win';
             }
         }
@@ -201,6 +203,7 @@ function checkGameState() {
     //Check for lose
     if (!hasEmptyTile() && !canMove()) {
         alert('You failed this time. Try once again');
+        storeResult();
         return 'lose';
     }
     //If it is neither win nor lose, continue
@@ -221,4 +224,21 @@ function canMove() {
         }
     }
     return false;
+}
+//Write results to local storage
+function storeResult(result) {
+    count += 1;
+
+    const data = {
+        id: count,
+        score: document.getElementById('score').innerText
+    };
+
+    let allData = JSON.parse(localStorage.getItem('gameDataArray')) || [];
+
+    allData.push(data);
+
+    localStorage.setItem('gameDataArray', JSON.stringify(allData));
+
+    alert('Results saved to local storage. Click on button to see results');
 }
