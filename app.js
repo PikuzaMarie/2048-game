@@ -61,10 +61,15 @@ function control(e) {
         setTwo();
     }
     document.getElementById('score').innerText = score;
-    checkForWin();
 }
 //Add event listener
-document.addEventListener('keyup', control);
+document.addEventListener('keyup', function(e) {
+    control(e);
+    let gameState = checkGameState();
+    if (gameState === 'win' || gameState === 'lose') {
+        document.removeEventListener('keyup', control);
+    }
+});
 
 function filterZeros(row) {
     return row.filter(num => num !== 0);
