@@ -22,6 +22,12 @@ h2 {
     line-height: 0.8;
     color: #ffffff;
 }
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #eee4da;
+    text-align: center;
+}
 #score {
     font-size: 30px;
     line-height: 0.9;
@@ -92,8 +98,68 @@ hr {
     color: #776e65;
     border: 1px solid #776e65;
 }
+.btn.close {
+    position: relative;
+    top: -10px;
+    left: 240px;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+}
+.btn.close img {
+    display: block;
+}
+.btn.close:hover {
+    background-color: #edce71;
+}
 .btn:hover {
     transform: scale(1.1);
+}
+table,
+tr,
+td,
+th {
+    padding: 8px 16px;
+    border-collapse: collapse;
+    border: 1px solid #776e65;
+}
+table {
+    width: 410px;
+}
+th:nth-child(1) {
+    width: 20%;
+}
+th:nth-child(2) {
+    width: 40%;
+}
+th:nth-child(3) {
+    width: 40%;
+}
+tr th:nth-child(1),
+   th:nth-child(1) {
+    background-color: #f4b17a;
+}
+tr th:nth-child(2),
+   th:nth-child(2) {
+    background-color: #ece0ca;
+}
+tr th:nth-child(3),
+   th:nth-child(3) {
+    background-color: #edc651;
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+    padding: 20px;
+    height: fit-content;
+    background-color: #776e65;
 }
 /* colored tiles */
 .x2 {

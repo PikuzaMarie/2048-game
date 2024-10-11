@@ -228,9 +228,12 @@ function canMove() {
 //Write results to local storage
 function storeResult(result) {
     count += 1;
+    let fullDate = new Date();
+    let timeStamp = fullDate.getTime();
 
     const data = {
         id: count,
+        time: timeStamp,
         score: document.getElementById('score').innerText
     };
 
@@ -242,3 +245,14 @@ function storeResult(result) {
 
     alert('Results saved to local storage. Click on button to see results');
 }
+//Display popup
+const popup = document.getElementById('popup-results');
+document.getElementById('btn-results').addEventListener('click', () => {
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+});
+//Close popup
+document.getElementById('btn-close').addEventListener('click', () => {
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+});
