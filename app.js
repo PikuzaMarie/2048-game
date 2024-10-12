@@ -28,6 +28,7 @@ function setGame() {
     //set numbers in two tiles
     setTwo();
     setTwo();
+    score = 0;
     document.getElementById('score').innerText = '0';
     document.addEventListener('keyup', control);
 }
@@ -228,12 +229,11 @@ function canMove() {
 }
 //Write results to local storage
 function storeResult(result) {
-    count += 1;
-    let timeStamp = new Date().toISOString();
+    let date = new Date();
 
     const data = {
-        id: count,
-        time: timeStamp,
+        id: count + 1,
+        time: formatTime(date),
         score: document.getElementById('score').innerText
     };
 
@@ -274,6 +274,19 @@ function displayResults(resultTable) {
             </tr>
         `;
     }
+}
+//Format time
+function formatTime(date) {
+    let hours = date.getHours();
+
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? String(hours).padStart(2, '0') : '12';
+
+    return `${hours}:${minutes}:${seconds} ${ampm}`;
 }
 //Display popup
 const popup = document.getElementById('popup-results');
