@@ -5,6 +5,7 @@ let columns = 4;
 let count = 0;
 
 window.onload = function() {
+    count = Number(localStorage.getItem('count')) || 0;
     setGame();
 }
 // Init the board and fill the game board with tiles
@@ -230,9 +231,11 @@ function canMove() {
 //Write results to local storage
 function storeResult(result) {
     let date = new Date();
+    count += 1;
+    localStorage.setItem('count', count);
 
     const data = {
-        id: count + 1,
+        id: count,
         time: formatTime(date),
         score: document.getElementById('score').innerText
     };
