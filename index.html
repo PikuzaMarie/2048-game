@@ -20,12 +20,12 @@
     <main>
         <div class="controls">
             <button type="button" class="btn primary" id="btn-results">Results</button>
-            <button type="button" class="btn secondary">Restart</button>
+            <button type="button" class="btn secondary" id="btn-restart">Restart</button>
         </div>
         <div class="popup" id="popup-results">
             <button type="button" class="btn close" id="btn-close"><img src="close_24dp_F65D3B_FILL0_wght400_GRAD0_opsz24.svg" alt="close-icon"></button>
             <h3>Results</h3>
-            <table id="result-table">
+            <table>
                 <thead>
                     <tr>
                         <th>№</th>
@@ -33,7 +33,7 @@
                         <th>Score</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="result-table"></tbody>
             </table>
         </div>
         <div id="board"></div>
