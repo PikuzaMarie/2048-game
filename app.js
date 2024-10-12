@@ -239,7 +239,10 @@ function storeResult(result) {
 
     let allData = JSON.parse(localStorage.getItem('gameDataArray')) || [];
 
-    allData.push(data);
+    allData.unshift(data);
+    if (allData.length > 10) {
+        allData.pop();
+    }
 
     localStorage.setItem('gameDataArray', JSON.stringify(allData));
 
