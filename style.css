@@ -135,15 +135,15 @@ th:nth-child(2) {
 th:nth-child(3) {
     width: 40%;
 }
-tr th:nth-child(1),
+tr td:nth-child(1),
    th:nth-child(1) {
     background-color: #f4b17a;
 }
-tr th:nth-child(2),
+tr td:nth-child(2),
    th:nth-child(2) {
     background-color: #ece0ca;
 }
-tr th:nth-child(3),
+tr td:nth-child(3),
    th:nth-child(3) {
     background-color: #edc651;
 }
