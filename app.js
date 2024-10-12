@@ -28,6 +28,7 @@ function setGame() {
     //set numbers in two tiles
     setTwo();
     setTwo();
+    document.getElementById('score').innerText = '0';
     document.addEventListener('keyup', control);
 }
 function updateTile(tile, num) {
@@ -228,8 +229,7 @@ function canMove() {
 //Write results to local storage
 function storeResult(result) {
     count += 1;
-    let fullDate = new Date();
-    let timeStamp = fullDate.getTime();
+    let timeStamp = new Date().toISOString();
 
     const data = {
         id: count,
@@ -245,14 +245,49 @@ function storeResult(result) {
 
     alert('Results saved to local storage. Click on button to see results');
 }
+//Display results in a table
+const resultTable = document.getElementById('result-table');
+function displayResults(resultTable) {
+    const storedData = localStorage.getItem('gameDataArray');
+
+    if (storedData) {
+        const allData = JSON.parse(storedData);
+
+        let resultRows = '';
+        
+        allData.forEach((resultData) => {
+            resultRows += `
+                <tr>
+                    <td>${resultData.id}</td>
+                    <td>${resultData.time}</td>
+                    <td>${resultData.score}</td>
+                </tr>
+            `;
+        });
+
+        resultTable.innerHTML = resultRows;
+        
+    } else {
+        resultTable.innerHTML = `
+            <tr>
+                <td colspan="3">No stored data</td>
+            </tr>
+        `;
+    }
+}
 //Display popup
 const popup = document.getElementById('popup-results');
 document.getElementById('btn-results').addEventListener('click', () => {
     popup.style.display = 'flex';
+    displayResults(resultTable);
     document.body.style.overflow = 'hidden';
 });
 //Close popup
 document.getElementById('btn-close').addEventListener('click', () => {
     popup.style.display = 'none';
     document.body.style.overflow = '';
+});
+//Refresh table
+document.getElementById('btn-restart').addEventListener('click', () => {
+    setGame();
 });
