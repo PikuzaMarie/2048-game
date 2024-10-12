@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="info">
+            <h1>2048</h1>
+            <div class="score-container">
+                <h2>score</h2>
+                <span id="score">0</span>
+            </div>
+        </div>
+        <hr>
+    </header>
+    <main>
+        <div class="controls">
+            <button type="button" class="btn primary" id="btn-results">Results</button>
+            <button type="button" class="btn secondary" id="btn-restart">Restart</button>
+        </div>
+        <div class="popup" id="popup-results">
+            <button type="button" class="btn close" id="btn-close"><img src="./assets/svg/close_24dp_F65D3B_FILL0_wght400_GRAD0_opsz24.svg" alt="close-icon"></button>
+            <h3>Results</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Time</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="result-table"></tbody>
+            </table>
+        </div>
+        <div id="board"></div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="github-logo">
+                <a href="https://github.com/PikuzaMarie" target="_blank">
+                    <img src="./assets/img/github-logo.png" alt="Github logo">
+                </a>
+                <small>Maryia Pikuza, 2024</small>
+            </div>
+            <div class="rs-rschool-logo">
+                <a href="https://rs.school/courses/javascript-ru" target="_blank">
+                    <img src="./assets/img/rs-school-logo.svg" alt="RS School logo">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-color: #faf8ef;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 80px;
+    line-height: 0.8;
+    color: #776e65;
+}
+h2 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 0.8;
+    color: #ffffff;
+}
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #eee4da;
+    text-align: center;
+}
+#score {
+    font-size: 30px;
+    line-height: 0.9;
+    font-weight: 800;
+    color: #ffffff;
+}
+.info {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 30px;
+}
+.score-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: fit-content;
+    padding: 10px;
+    background-color: #b01f8c;
+    border-radius: 10px;
+}
+hr {
+    border: 1px solid #776e65;
+}
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    background-color: #cdc1b5;
+    border: 5px solid #bbada0;
+}
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    font-size: 30px;
+    font-weight: 800;
+}
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.btn {
+    width: fit-content;
+    height: auto;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+}
+.btn.primary {
+    background-color: #776e65;
+    color: #f3eeea;
+}
+.btn.secondary {
+    background-color: #faf8ef;
+    color: #776e65;
+    border: 1px solid #776e65;
+}
+.btn.close {
+    position: relative;
+    top: -10px;
+    left: 240px;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+}
+.btn.close img {
+    display: block;
+}
+.btn.close:hover {
+    background-color: #edce71;
+}
+.btn:hover {
+    transform: scale(1.1);
+}
+table,
+tr,
+td,
+th {
+    padding: 8px 16px;
+    border-collapse: collapse;
+    border: 1px solid #776e65;
+}
+table {
+    width: 410px;
+}
+th:nth-child(1) {
+    width: 20%;
+}
+th:nth-child(2) {
+    width: 40%;
+}
+th:nth-child(3) {
+    width: 40%;
+}
+tr td:nth-child(1),
+   th:nth-child(1) {
+    background-color: #f4b17a;
+}
+tr td:nth-child(2),
+   th:nth-child(2) {
+    background-color: #ece0ca;
+}
+tr td:nth-child(3),
+   th:nth-child(3) {
+    background-color: #edc651;
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+    padding: 20px;
+    height: fit-content;
+    background-color: #776e65;
+}
+footer {
+    width: 100vw;
+    padding: 0 30%;
+    box-sizing: border-box;
+    filter: opacity(65%);
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    align-items: center;
+    background-color: rgba(201, 199, 196, 0.5);
+}
+.container div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.github-logo img {
+    width: 43px;
+    height: 43px;
+}
+.rs-rschool-logo img {
+    width: 80px;
+    height: 43px;
+}
+/* colored tiles */
+.x2 {
+    background-color: #eee4da;
+    color: #727371;
+}
+.x4 {
+    background-color: #ece0ca;
+    color: #727371;
+}
+.x8 {
+    background-color: #f4b17a;
+    color: white;
+}
+.x16{
+    background-color: #f59575;
+    color: white;
+}
+.x32{
+    background-color: #f57c5f;
+    color: white;
+}
+.x64{
+    background-color: #f65d3b;
+    color: white;
+}
+.x128{
+    background-color: #edce71;
+    color: white;
+}
+.x256{
+    background-color: #edcc63;
+    color: white;
+}
+.x512{
+    background-color: #edc651;
+    color: white;
+}
+.x1024{
+    background-color: #eec744;
+    color: white;
+}
+.x2048{
+    background-color: #ecc230;
+    color: white;
+}
+.x4096 {
+    background-color: #fe3d3d;
+    color: white;
+}
+.x8192 {
+    background-color: #ff2020;
+    color: white;
+}
